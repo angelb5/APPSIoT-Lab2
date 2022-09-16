@@ -23,6 +23,9 @@
             android:name=".ComputadoraNuevoActivity"
             android:exported="false" />
         <activity
+            android:name=".Computadora.ComputerListActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
