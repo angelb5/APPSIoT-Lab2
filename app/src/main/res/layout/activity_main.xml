@@ -14,12 +14,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:textSize="25sp"
+        android:onClick="reporte"
         android:text="Reporte"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/btnMonitor"
         app:layout_constraintStart_toStartOf="@+id/btnMonitor"
         app:layout_constraintTop_toBottomOf="@+id/btnMonitor" />
-
 
 
     <Button
@@ -27,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:onClick="tecladoList"
         android:text="Teclado"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/btnCompu"
@@ -40,6 +41,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="176dp"
         android:layout_marginEnd="100dp"
+        android:onClick="computadoraList"
         android:text="Computadora"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,8 +53,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textSize="25sp"
+        android:onClick="monitorList"
         android:text="Monitor"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/btnTeclado"
         app:layout_constraintStart_toStartOf="@+id/btnTeclado"
         app:layout_constraintTop_toBottomOf="@+id/btnTeclado" />

@@ -14,13 +14,22 @@
         android:theme="@style/Theme.APPSIoTLab2"
         tools:targetApi="31">
         <activity
-            android:name=".TecladoNuevoActivity"
+            android:name=".reporteActivity"
             android:exported="false" />
         <activity
-            android:name=".MonitorNuevoActivity"
+            android:name=".Teclado.TecladoListActivity"
             android:exported="false" />
         <activity
-            android:name=".ComputadoraNuevoActivity"
+            android:name=".Monitor.MonitorListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Teclado.TecladoNuevoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Monitor.MonitorNuevoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Computadora.ComputadoraNuevoActivity"
             android:exported="false" />
         <activity
             android:name=".Computadora.ComputerListActivity"
