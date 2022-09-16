@@ -8,18 +8,17 @@ import android.view.Menu;
 
 import com.example.appsiot_lab2.R;
 
-public class ComputadoraNuevoActivity extends AppCompatActivity {
+public class ComputadoraActualizarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_computadora_nuevo);
+        setContentView(R.layout.activity_computadora_actualizar);
     }
 
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_nuevo,menu);
+        getMenuInflater().inflate(R.menu.menu_actualizar,menu);
         return true;
     }
-
 }
