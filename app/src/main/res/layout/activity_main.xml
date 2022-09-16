@@ -4,15 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_gravity="center_horizontal"
+    tools:context=".MainActivity"
+    app:titleEnabled="false"
+    app:expandedTitleGravity="bottom|center_horizontal">
 
-    <TextView
+    <Button
+        android:id="@+id/btnReporte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="64dp"
+        android:textSize="25sp"
+        android:text="Reporte"
+        app:layout_constraintEnd_toEndOf="@+id/btnMonitor"
+        app:layout_constraintStart_toStartOf="@+id/btnMonitor"
+        app:layout_constraintTop_toBottomOf="@+id/btnMonitor" />
+
+    <Button
+        android:id="@+id/btnTeclado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Teclado"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/btnCompu"
+        app:layout_constraintStart_toStartOf="@+id/btnCompu"
+        app:layout_constraintTop_toBottomOf="@+id/btnCompu" />
+
+    <Button
+        android:id="@+id/btnCompu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="176dp"
+        android:layout_marginEnd="100dp"
+        android:text="Computadora"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btnMonitor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="25sp"
+        android:text="Monitor"
+        app:layout_constraintEnd_toEndOf="@+id/btnTeclado"
+        app:layout_constraintStart_toStartOf="@+id/btnTeclado"
+        app:layout_constraintTop_toBottomOf="@+id/btnTeclado" />
 </androidx.constraintlayout.widget.ConstraintLayout>
