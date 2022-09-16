@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.appsiot_lab2.R;
+
 public class TecladoNuevoActivity extends AppCompatActivity {
 
     @Override
