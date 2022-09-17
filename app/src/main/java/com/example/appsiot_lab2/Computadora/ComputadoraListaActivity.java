@@ -44,6 +44,7 @@ public class ComputadoraListaActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
+        ((TextView) findViewById(R.id.computadoraEmpty)).setText("No hay computadoras ingresadas");
         mostrarLista();
     }
 
@@ -68,6 +69,7 @@ public class ComputadoraListaActivity extends AppCompatActivity {
                 mostrarAlerta();
                 return true;
             case R.id.itemListaTodo:
+                ((TextView) findViewById(R.id.computadoraEmpty)).setText("No hay computadoras ingresadas");
                 mostrarLista();
                 return true;
             default:
@@ -105,15 +107,26 @@ public class ComputadoraListaActivity extends AppCompatActivity {
                 String busqueda = busquedaEditText.getText().toString();
                 ArrayList<Computadora> computadoraList = ((Lab2Application) ComputadoraListaActivity.this.getApplication()).getComputadoraList();
                 Optional<Computadora> optComputadora = computadoraList.stream().filter(c -> c.getActivo().equals(busqueda)).findAny();
-
+                ArrayList<Computadora> computadoraBusquedaList = new ArrayList<>();
+                if(optComputadora.isPresent()){
+                    computadoraBusquedaList.add(optComputadora.get());
+                }else{
+                    ((TextView) findViewById(R.id.computadoraEmpty)).setText("No existe el equipo con Activo: "+busqueda);
+                }
+                ComputadoraListAdapter computadoraBusquedaListAdapter = new ComputadoraListAdapter(ComputadoraListaActivity.this, R.layout.item_computadora,computadoraBusquedaList);
+                computadoralistView.setAdapter(computadoraBusquedaListAdapter);
+                computadoralistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Log.d("msgAS", "La computadora es la numero: "+i);
+                    }
+                });
             }
         });
         alerta.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                mostrarLista();
             }
         });
         alerta.show();
     }
-
 }
