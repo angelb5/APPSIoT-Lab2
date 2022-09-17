@@ -83,21 +83,22 @@ public class ComputadoraListaActivity extends AppCompatActivity {
     }
 
     public void mostrarLista(){
-        ArrayList<Computadora> computadoraList = ((Lab2Application) this.getApplication()).getComputadoraList();
+        ArrayList<Computadora> computadoraList = ((Lab2Application) ComputadoraListaActivity.this.getApplication()).getComputadoraList();
         ComputadoraListAdapter computadoraListAdapter = new ComputadoraListAdapter(ComputadoraListaActivity.this, R.layout.item_computadora,computadoraList);
         computadoralistView.setAdapter(computadoraListAdapter);
         computadoralistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("msgAS", "La computadora es la numero: "+i);
+                Intent intent = new Intent(ComputadoraListaActivity.this, ComputadoraActualizarActivity.class);
+                intent.putExtra("computadora",computadoraList.get(i));
+                startActivity(intent);
             }
         });
     }
 
     public void mostrarAlerta(){
         AlertDialog.Builder alerta = new AlertDialog.Builder(ComputadoraListaActivity.this);
-        alerta.setTitle("Manual Item Search");
-        alerta.setMessage("Input Search Query");
+        alerta.setTitle("Computadora");
 
         final EditText busquedaEditText = new EditText(ComputadoraListaActivity.this);
         alerta.setView(busquedaEditText);
@@ -106,7 +107,7 @@ public class ComputadoraListaActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String busqueda = busquedaEditText.getText().toString();
                 ArrayList<Computadora> computadoraList = ((Lab2Application) ComputadoraListaActivity.this.getApplication()).getComputadoraList();
-                Optional<Computadora> optComputadora = computadoraList.stream().filter(c -> c.getActivo().equals(busqueda)).findAny();
+                Optional<Computadora> optComputadora = computadoraList.stream().filter(c -> c.getActivo().equalsIgnoreCase(busqueda)).findAny();
                 ArrayList<Computadora> computadoraBusquedaList = new ArrayList<>();
                 if(optComputadora.isPresent()){
                     computadoraBusquedaList.add(optComputadora.get());
