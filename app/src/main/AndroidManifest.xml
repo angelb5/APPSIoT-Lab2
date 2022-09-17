@@ -4,8 +4,8 @@
     package="com.example.appsiot_lab2">
 
     <application
-        android:allowBackup="true"
         android:name=".Lab2Application"
+        android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APPSIoTLab2"
         tools:targetApi="31">
+        <activity
+            android:name=".TecladoActualizarActivity"
+            android:exported="false" />
         <activity
             android:name=".reporteActivity"
             android:exported="false" />

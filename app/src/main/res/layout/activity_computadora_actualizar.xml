@@ -10,59 +10,55 @@
         android:id="@+id/tv_title_computadora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="140dp"
         android:text="Computadora"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner_activo_computadora"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:id="@+id/spinnerMarcaactcompu"
+        android:layout_width="165dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="28dp"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_modelo_compu" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewActivocomp"
+        app:layout_constraintStart_toStartOf="@+id/textViewActivocomp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewActivocomp" />
 
     <EditText
-        android:id="@+id/et_modelo_compu"
+        android:id="@+id/plaintextAnioactcompu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.308"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_computadora" />
-
-    <EditText
-        android:id="@+id/et_anio_compu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.308"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_activo_computadora" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMarcaactcompu" />
 
     <EditText
-        android:id="@+id/et_info_compu"
+        android:id="@+id/plaintextCpuact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.308"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_anio_compu" />
+        app:layout_constraintEnd_toEndOf="@+id/plaintextAnioactcompu"
+        app:layout_constraintStart_toStartOf="@+id/plaintextAnioactcompu"
+        app:layout_constraintTop_toBottomOf="@+id/plaintextAnioactcompu" />
+
+    <TextView
+        android:id="@+id/textViewActivocomp"
+        android:layout_width="165dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title_computadora"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_title_computadora"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_computadora" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
