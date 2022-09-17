@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_computadora"/>
+        tools:listitem="@layout/item_equipos"/>
     <TextView
         android:id="@+id/computadoraEmpty"
         android:text="No hay computadoras ingresadas"

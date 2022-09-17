@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +25,6 @@ import com.example.appsiot_lab2.entity.Computadora;
 
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.Random;
 
 public class ComputadoraListaActivity extends AppCompatActivity {
 
@@ -84,7 +82,7 @@ public class ComputadoraListaActivity extends AppCompatActivity {
 
     public void mostrarLista(){
         ArrayList<Computadora> computadoraList = ((Lab2Application) ComputadoraListaActivity.this.getApplication()).getComputadoraList();
-        ComputadoraListAdapter computadoraListAdapter = new ComputadoraListAdapter(ComputadoraListaActivity.this, R.layout.item_computadora,computadoraList);
+        ComputadoraListAdapter computadoraListAdapter = new ComputadoraListAdapter(ComputadoraListaActivity.this, R.layout.item_equipos,computadoraList);
         computadoralistView.setAdapter(computadoraListAdapter);
         computadoralistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -114,7 +112,7 @@ public class ComputadoraListaActivity extends AppCompatActivity {
                 }else{
                     ((TextView) findViewById(R.id.computadoraEmpty)).setText("No existe el equipo con Activo: "+busqueda);
                 }
-                ComputadoraListAdapter computadoraBusquedaListAdapter = new ComputadoraListAdapter(ComputadoraListaActivity.this, R.layout.item_computadora,computadoraBusquedaList);
+                ComputadoraListAdapter computadoraBusquedaListAdapter = new ComputadoraListAdapter(ComputadoraListaActivity.this, R.layout.item_equipos,computadoraBusquedaList);
                 computadoralistView.setAdapter(computadoraBusquedaListAdapter);
                 computadoralistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override

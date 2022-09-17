@@ -19,7 +19,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.appsiot_lab2.Computadora.ComputadoraListaActivity;
 import com.example.appsiot_lab2.Computadora.ComputadoraNuevoActivity;
 import com.example.appsiot_lab2.Lab2Application;
 import com.example.appsiot_lab2.R;
@@ -88,7 +87,7 @@ public class MonitorListActivity extends AppCompatActivity {
 
     public void mostrarLista(){
         ArrayList<Monitor> monitorList = ((Lab2Application) this.getApplication()).getMonitorList();
-        MonitorListAdapter monitorListAdapter = new MonitorListAdapter(MonitorListActivity.this, R.layout.item_monitor,monitorList);
+        MonitorListAdapter monitorListAdapter = new MonitorListAdapter(MonitorListActivity.this, R.layout.item_equipos,monitorList);
         monitorlistView.setAdapter(monitorListAdapter);
         monitorlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -116,7 +115,7 @@ public class MonitorListActivity extends AppCompatActivity {
                 }else{
                     ((TextView) findViewById(R.id.computadoraEmpty)).setText("No existe el equipo con Activo: "+busqueda);
                 }
-                ComputadoraListAdapter computadoraBusquedaListAdapter = new ComputadoraListAdapter(MonitorListActivity.this, R.layout.item_computadora,computadoraBusquedaList);
+                ComputadoraListAdapter computadoraBusquedaListAdapter = new ComputadoraListAdapter(MonitorListActivity.this, R.layout.item_equipos,computadoraBusquedaList);
                 monitorlistView.setAdapter(computadoraBusquedaListAdapter);
                 monitorlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
