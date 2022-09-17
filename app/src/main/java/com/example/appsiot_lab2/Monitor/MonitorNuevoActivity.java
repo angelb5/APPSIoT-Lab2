@@ -1,9 +1,12 @@
 package com.example.appsiot_lab2.Monitor;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -19,13 +22,23 @@ import com.example.appsiot_lab2.entity.Computadora;
 import com.example.appsiot_lab2.entity.Monitor;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MonitorNuevoActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitor_nuevo);
+        ArrayList<Computadora> computadoraList = ((Lab2Application) MonitorNuevoActivity.this.getApplication()).getComputadoraList();
+        List<String> activos = computadoraList.stream().map(Computadora::getActivo).collect(Collectors.toList());
+        Spinner pcActivo = findViewById(R.id.spinner_activo_nmonitor);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(MonitorNuevoActivity.this, android.R.layout.simple_spinner_item,activos);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        pcActivo.setAdapter(adapter);
+
     }
 
     @Override
@@ -42,16 +55,12 @@ public class MonitorNuevoActivity extends AppCompatActivity {
                 Monitor monitor = new Monitor();
                 Boolean activoNoRepeat = true;
                 EditText activo = findViewById(R.id.et_activo_nmonitor);
-                ArrayList<Computadora> computadoraList = ((Lab2Application) MonitorNuevoActivity.this.getApplication()).getComputadoraList();
-                ArrayAdapter<Computadora> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,computadoraList);
+                String activoStr = activo.getText().toString();
                 Spinner pcActivo = findViewById(R.id.spinner_activo_nmonitor);
-                pcActivo.setAdapter(adapter);
                 Spinner marca = findViewById(R.id.spinner_marca_nmonitor);
                 Spinner pulgadas = findViewById(R.id.spinner_pulgadas_nmonitor);
                 EditText anio = findViewById(R.id.et_anio_nmonitor);
                 EditText modelo = findViewById(R.id.et_modelo_nteclado);
-                //TODO: Validaciones, activo no repetido, etc
-                String activoStr = activo.getText().toString();
                 activoStr = activoStr.trim();
                 Computadora pcActivoCom = (Computadora) pcActivo.getSelectedItem();
                 String marcaStr = marca.getSelectedItem().toString();
@@ -66,6 +75,7 @@ public class MonitorNuevoActivity extends AppCompatActivity {
                         break;
                     }
                 }
+                //TODO: Validaciones, activo no repetido, etc
                 if(!activoStr.isEmpty() && !pcActivoCom.getActivo().isEmpty() && !marcaStr.isEmpty() && !pulgadasStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty()){
                     if(activoNoRepeat){
                         monitor.setActivo(activoStr);

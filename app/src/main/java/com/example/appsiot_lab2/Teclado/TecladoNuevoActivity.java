@@ -1,8 +1,10 @@
 package com.example.appsiot_lab2.Teclado;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,18 +14,28 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.appsiot_lab2.Lab2Application;
+import com.example.appsiot_lab2.Monitor.MonitorNuevoActivity;
 import com.example.appsiot_lab2.R;
 import com.example.appsiot_lab2.entity.Computadora;
 import com.example.appsiot_lab2.entity.Teclado;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TecladoNuevoActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teclado_nuevo);
+        ArrayList<Computadora> computadoraList = ((Lab2Application) TecladoNuevoActivity.this.getApplication()).getComputadoraList();
+        List<String> activos = computadoraList.stream().map(Computadora::getActivo).collect(Collectors.toList());
+        Spinner pcActivo = findViewById(R.id.spinner_activo_nmonitor);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(TecladoNuevoActivity.this, android.R.layout.simple_spinner_item,activos);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        pcActivo.setAdapter(adapter);
     }
 
     @Override
@@ -40,10 +52,7 @@ public class TecladoNuevoActivity extends AppCompatActivity {
                 Teclado teclado = new Teclado();
                 Boolean activoNoRepeat = true;
                 EditText activo = findViewById(R.id.et_activo_nteclado);
-                ArrayList<Computadora> computadoraList = ((Lab2Application) TecladoNuevoActivity.this.getApplication()).getComputadoraList();
-                ArrayAdapter<Computadora> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,computadoraList);
                 Spinner pcActivo = findViewById(R.id.spinner_activo_nteclado);
-                pcActivo.setAdapter(adapter);
                 Spinner marca = findViewById(R.id.spinner_marca_nteclado);
                 Spinner idioma = findViewById(R.id.spinner_idioma_nteclado);
                 EditText anio = findViewById(R.id.et_anio_nteclado);
@@ -72,7 +81,7 @@ public class TecladoNuevoActivity extends AppCompatActivity {
                         teclado.setAnio(anioStr);
                         teclado.setModelo(modeloStr);
                         tecladoList.add(teclado);
-                        ((Lab2Application) TecladoNuevoActivity.this.getApplication()).setComputadoraList(computadoraList);
+                        ((Lab2Application) TecladoNuevoActivity.this.getApplication()).setTecladoList(tecladoList);
                         finish();
                     }else{
                         Toast.makeText(TecladoNuevoActivity.this,"No puede repetir el nombre de activo",Toast.LENGTH_LONG).show();
