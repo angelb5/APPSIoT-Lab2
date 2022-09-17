@@ -119,7 +119,9 @@ public class ComputadoraListaActivity extends AppCompatActivity {
                 computadoralistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Log.d("msgAS", "La computadora es la numero: "+i);
+                        Intent intent = new Intent(ComputadoraListaActivity.this, ComputadoraActualizarActivity.class);
+                        intent.putExtra("computadora",computadoraBusquedaList.get(i));
+                        startActivity(intent);
                     }
                 });
             }
