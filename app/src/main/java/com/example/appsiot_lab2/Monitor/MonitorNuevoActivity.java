@@ -34,13 +34,13 @@ public class MonitorNuevoActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.btnBarAdd:
                 //Datos de prueba
                 Monitor monitor = new Monitor();
                 Boolean activoNoRepeat = true;
                 EditText activo = findViewById(R.id.et_activo_nmonitor);
-                Spinner pcActivo= findViewById(R.id.spinner_activo_nmonitor);
+                Spinner pcActivo = findViewById(R.id.spinner_activo_nmonitor);
                 Spinner marca = findViewById(R.id.spinner_marca_nmonitor);
                 Spinner pulgadas = findViewById(R.id.spinner_pulgadas_nmonitor);
                 EditText anio = findViewById(R.id.et_anio_nmonitor);
@@ -53,32 +53,33 @@ public class MonitorNuevoActivity extends AppCompatActivity {
                 String anioStr = anio.getText().toString();
                 String modeloStr = modelo.getText().toString();
                 ArrayList<Monitor> monitorList = ((Lab2Application) MonitorNuevoActivity.this.getApplication()).getMonitorList();
-                for (int i = 0; i < monitorList.size() ; i++) {
-                    if(monitorList.get(i)){
-                        activoNoRepeat = false;
-                        break;
-                    }
-                }
-                if(!activoStr.isEmpty() || !marcaStr.isEmpty() || !anioStr.isEmpty() || !cpuStr.isEmpty()){
-                    if(activoNoRepeat){
-                        computadora.setActivo(activoStr);
-                        computadora.setMarca(marcaStr);
-                        computadora.setAnio(anioStr);
-                        computadora.setCpu(cpuStr);
-                        computadoraList.add(computadora);
-                        ((Lab2Application) ComputadoraNuevoActivity.this.getApplication()).setComputadoraList(computadoraList);
-                    }else{
-                        Toast.makeText(ComputadoraNuevoActivity.this,"No puede repetir el nombre de activo",Toast.LENGTH_LONG).show();
-                    }
-                }else{
-                    Toast.makeText(ComputadoraNuevoActivity.this,"Debe rellenar todos los campos para agregar una computadora",Toast.LENGTH_LONG).show();
-                }
-                finish();
-                return true;
+//                for (int i = 0; i < monitorList.size() ; i++) {
+//                    if(monitorList.get(i)){
+//                        activoNoRepeat = false;
+//                        break;
+//                    }
+//                }
+//                if(!activoStr.isEmpty() || !marcaStr.isEmpty() || !anioStr.isEmpty() || !cpuStr.isEmpty()){
+//                    if(activoNoRepeat){
+//                        computadora.setActivo(activoStr);
+//                        computadora.setMarca(marcaStr);
+//                        computadora.setAnio(anioStr);
+//                        computadora.setCpu(cpuStr);
+//                        computadoraList.add(computadora);
+//                        ((Lab2Application) ComputadoraNuevoActivity.this.getApplication()).setComputadoraList(computadoraList);
+//                    }else{
+//                        Toast.makeText(ComputadoraNuevoActivity.this,"No puede repetir el nombre de activo",Toast.LENGTH_LONG).show();
+//                    }
+//                }else{
+//                    Toast.makeText(ComputadoraNuevoActivity.this,"Debe rellenar todos los campos para agregar una computadora",Toast.LENGTH_LONG).show();
+//                }
+//                finish();
+//                return true;
             default:
                 return super.onContextItemSelected(item);
-        }
+//        }
 
+        }
     }
 
 }
