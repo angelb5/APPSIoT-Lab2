@@ -18,17 +18,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinnerMarcaactcompu"
+        android:id="@+id/sp_marca_compu_act"
         android:layout_width="165dp"
         android:layout_height="37dp"
         android:layout_marginTop="28dp"
+        android:entries="@array/marcas"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewActivocomp"
-        app:layout_constraintStart_toStartOf="@+id/textViewActivocomp"
-        app:layout_constraintTop_toBottomOf="@+id/textViewActivocomp" />
+        app:layout_constraintEnd_toEndOf="@+id/tv_activo_compu_act"
+        app:layout_constraintStart_toStartOf="@+id/tv_activo_compu_act"
+        app:layout_constraintTop_toBottomOf="@+id/tv_activo_compu_act" />
 
     <EditText
-        android:id="@+id/plaintextAnioactcompu"
+        android:id="@+id/et_anio_compu_act"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -37,21 +38,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.308"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerMarcaactcompu" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_marca_compu_act" />
 
     <EditText
-        android:id="@+id/plaintextCpuact"
+        android:id="@+id/et_cpu_compu_act"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/plaintextAnioactcompu"
-        app:layout_constraintStart_toStartOf="@+id/plaintextAnioactcompu"
-        app:layout_constraintTop_toBottomOf="@+id/plaintextAnioactcompu" />
+        app:layout_constraintEnd_toEndOf="@+id/et_anio_compu_act"
+        app:layout_constraintStart_toStartOf="@+id/et_anio_compu_act"
+        app:layout_constraintTop_toBottomOf="@+id/et_anio_compu_act" />
 
     <TextView
-        android:id="@+id/textViewActivocomp"
+        android:id="@+id/tv_activo_compu_act"
         android:layout_width="165dp"
         android:layout_height="37dp"
         android:layout_marginTop="28dp"
