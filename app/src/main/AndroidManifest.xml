@@ -15,7 +15,7 @@
         android:theme="@style/Theme.APPSIoTLab2"
         tools:targetApi="31">
         <activity
-            android:name=".TecladoActualizarActivity"
+            android:name=".Teclado.TecladoActualizarActivity"
             android:exported="false" />
         <activity
             android:name=".reporteActivity"
@@ -37,6 +37,9 @@
             android:exported="false" />
         <activity
             android:name=".Computadora.ComputadoraListaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Computadora.ComputadoraActualizarActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
