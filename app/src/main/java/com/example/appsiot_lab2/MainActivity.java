@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.appsiot_lab2.Computadora.ComputerListActivity;
+import com.example.appsiot_lab2.Computadora.ComputadoraListaActivity;
 import com.example.appsiot_lab2.Monitor.MonitorListActivity;
 import com.example.appsiot_lab2.Teclado.TecladoListActivity;
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void computadoraList(View view){
-        Intent intent = new Intent(this, ComputerListActivity.class);
+        Intent intent = new Intent(this, ComputadoraListaActivity.class);
         startActivity(intent);
     }
 

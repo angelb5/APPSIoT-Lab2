@@ -49,4 +49,8 @@ public class Computadora implements Serializable {
     public void setCpu(String cpu) {
         this.cpu = cpu;
     }
+
+    public String getInfo(){
+        return "Activo: "+activo+"\nMarca: "+marca+"\nAño: "+anio+"\nCPU: "+cpu;
+    }
 }

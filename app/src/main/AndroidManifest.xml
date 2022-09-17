@@ -5,6 +5,7 @@
 
     <application
         android:allowBackup="true"
+        android:name=".Lab2Application"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -32,7 +33,7 @@
             android:name=".Computadora.ComputadoraNuevoActivity"
             android:exported="false" />
         <activity
-            android:name=".Computadora.ComputerListActivity"
+            android:name=".Computadora.ComputadoraListaActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
