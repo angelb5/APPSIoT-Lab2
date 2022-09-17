@@ -4,14 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.appsiot_lab2.Lab2Application;
 import com.example.appsiot_lab2.R;
 import com.example.appsiot_lab2.entity.Computadora;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class ComputadoraNuevoActivity extends AppCompatActivity {
@@ -33,24 +38,38 @@ public class ComputadoraNuevoActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.btnBarAdd:
                 //Datos de prueba
-                Random random = new Random();
-                ArrayList<Computadora> testList = new ArrayList<>();
-                testList.add(new Computadora("C1210","Dell","2023","Ryzen 7000"));
-                testList.add(new Computadora("C1211","Hewlet Packard","2032","Ryzen 9000"));
-                testList.add(new Computadora("C1212","tochiba","1940","Ryzen -1"));
-                testList.add(new Computadora("C1213","Hell","2022","intel i7"));
-                testList.add(new Computadora("C1214","no","4000","q"));
-                testList.add(new Computadora("C1215","a","2022","intel i"));
-                testList.add(new Computadora("C1216","b","2022","intel j"));
-                testList.add(new Computadora("C1217","c","2022","intellij"));
-                testList.add(new Computadora("C1218","d","2022","amd amd amd"));
-                //Fin de datos de prueba
-                Computadora nuevaComputadora = testList.get(random.nextInt(testList.size()));
+                Computadora computadora = new Computadora();
+                Boolean activoNoRepeat = true;
+                EditText activo = findViewById(R.id.et_activo_ncompu);
+                Spinner marca = findViewById(R.id.spinner_marca_ncomputadora);
+                EditText anio = findViewById(R.id.et_anio_ncompu);
+                EditText cpu = findViewById(R.id.et_cpu_ncompu);
                 //TODO: Validaciones, activo no repetido, etc
-
+                String activoStr = activo.getText().toString();
+                String marcaStr = marca.getSelectedItem().toString();
+                String anioStr = anio.getText().toString();
+                String cpuStr = cpu.getText().toString();
                 ArrayList<Computadora> computadoraList = ((Lab2Application) ComputadoraNuevoActivity.this.getApplication()).getComputadoraList();
-                computadoraList.add(nuevaComputadora);
-                ((Lab2Application) ComputadoraNuevoActivity.this.getApplication()).setComputadoraList(computadoraList);
+                for (int i = 0; i < computadoraList.size() ; i++) {
+                    if(computadoraList.get(i).getActivo().equals(activoStr)){
+                        activoNoRepeat = false;
+                        break;
+                    }
+                }
+                if(!activoStr.isEmpty() || !marcaStr.isEmpty() || !anioStr.isEmpty() || !cpuStr.isEmpty()){
+                    if(activoNoRepeat){
+                        computadora.setActivo(activoStr);
+                        computadora.setMarca(marcaStr);
+                        computadora.setAnio(anioStr);
+                        computadora.setCpu(cpuStr);
+                        computadoraList.add(computadora);
+                        ((Lab2Application) ComputadoraNuevoActivity.this.getApplication()).setComputadoraList(computadoraList);
+                    }else{
+                        Toast.makeText(ComputadoraNuevoActivity.this,"No puede repetir el nombre de activo",Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(ComputadoraNuevoActivity.this,"Debe rellenar todos los campos para agregar una computadora",Toast.LENGTH_LONG).show();
+                }
                 finish();
                 return true;
             default:
