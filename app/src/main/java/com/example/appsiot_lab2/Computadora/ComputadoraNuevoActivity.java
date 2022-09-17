@@ -46,9 +46,11 @@ public class ComputadoraNuevoActivity extends AppCompatActivity {
                 EditText cpu = findViewById(R.id.et_cpu_ncompu);
                 //TODO: Validaciones, activo no repetido, etc
                 String activoStr = activo.getText().toString();
+                activoStr = activoStr.trim();
                 String marcaStr = marca.getSelectedItem().toString();
                 String anioStr = anio.getText().toString();
                 String cpuStr = cpu.getText().toString();
+                cpuStr = cpuStr.trim();
                 ArrayList<Computadora> computadoraList = ((Lab2Application) ComputadoraNuevoActivity.this.getApplication()).getComputadoraList();
                 for (int i = 0; i < computadoraList.size() ; i++) {
                     if(computadoraList.get(i).getActivo().equals(activoStr)){

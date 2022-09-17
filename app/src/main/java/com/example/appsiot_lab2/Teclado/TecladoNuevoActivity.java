@@ -50,11 +50,13 @@ public class TecladoNuevoActivity extends AppCompatActivity {
                 EditText modelo = findViewById(R.id.et_modelo_nteclado);
                 //TODO: Validaciones, activo no repetido, etc
                 String activoStr = activo.getText().toString();
+                activoStr = activoStr.trim();
                 Computadora pcActivoCom = (Computadora) pcActivo.getSelectedItem();
                 String marcaStr = marca.getSelectedItem().toString();
                 String idiomaStr = idioma.getSelectedItem().toString();
                 String anioStr = anio.getText().toString();
                 String modeloStr = modelo.getText().toString();
+                modeloStr = modeloStr.trim();
                 ArrayList<Teclado> tecladoList = ((Lab2Application) TecladoNuevoActivity.this.getApplication()).getTecladoList();
                 for (int i = 0; i < tecladoList.size() ; i++) {
                     if(tecladoList.get(i).getActivo().equals(activoStr)){

@@ -52,11 +52,13 @@ public class MonitorNuevoActivity extends AppCompatActivity {
                 EditText modelo = findViewById(R.id.et_modelo_nteclado);
                 //TODO: Validaciones, activo no repetido, etc
                 String activoStr = activo.getText().toString();
+                activoStr = activoStr.trim();
                 Computadora pcActivoCom = (Computadora) pcActivo.getSelectedItem();
                 String marcaStr = marca.getSelectedItem().toString();
                 String pulgadasStr = pulgadas.getSelectedItem().toString();
                 String anioStr = anio.getText().toString();
                 String modeloStr = modelo.getText().toString();
+                modeloStr = modeloStr.trim();
                 ArrayList<Monitor> monitorList = ((Lab2Application) MonitorNuevoActivity.this.getApplication()).getMonitorList();
                 for (int i = 0; i < monitorList.size() ; i++) {
                     if(monitorList.get(i).getActivo().equals(activoStr)){
