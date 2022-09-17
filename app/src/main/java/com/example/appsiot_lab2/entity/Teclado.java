@@ -22,6 +22,10 @@ public class Teclado implements Serializable {
         this.modelo = modelo;
     }
 
+    public String getInfo(){
+        return "Activo: "+activo+"\nPC: "+pc+"\nMarca: "+marca+"\nAño: "+anio+"\nIdioma: "+idioma+"\nModelo: "+modelo;
+    }
+
     public String getActivo() {
         return activo;
     }
