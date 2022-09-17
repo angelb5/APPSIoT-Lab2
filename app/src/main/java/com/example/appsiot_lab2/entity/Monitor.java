@@ -1,6 +1,8 @@
 package com.example.appsiot_lab2.entity;
 
-public class Monitor {
+import java.io.Serializable;
+
+public class Monitor implements Serializable {
     private String activo;
     private Computadora pc;
     private String marca;
@@ -71,4 +73,5 @@ public class Monitor {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
+
 }

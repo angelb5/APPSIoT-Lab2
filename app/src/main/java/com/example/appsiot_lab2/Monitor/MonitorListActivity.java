@@ -19,12 +19,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.appsiot_lab2.Computadora.ComputadoraNuevoActivity;
 import com.example.appsiot_lab2.Lab2Application;
 import com.example.appsiot_lab2.R;
-import com.example.appsiot_lab2.adapter.ComputadoraListAdapter;
 import com.example.appsiot_lab2.adapter.MonitorListAdapter;
-import com.example.appsiot_lab2.entity.Computadora;
 import com.example.appsiot_lab2.entity.Monitor;
 
 import java.util.ArrayList;
@@ -56,7 +53,7 @@ public class MonitorListActivity extends AppCompatActivity {
         super.onContentChanged();
         TextView monitorEmpty = findViewById(R.id.monitorEmpty);
         monitorEmpty.setTypeface(null, Typeface.ITALIC);
-        ((ListView) findViewById(R.id.computadoraListView)).setEmptyView(monitorEmpty);
+        ((ListView) findViewById(R.id.monitorListView)).setEmptyView(monitorEmpty);
     }
 
     @Override
@@ -72,7 +69,7 @@ public class MonitorListActivity extends AppCompatActivity {
                 mostrarAlerta();
                 return true;
             case R.id.itemListaTodo:
-                ((TextView) findViewById(R.id.computadoraEmpty)).setText("No hay computadoras ingresadas");
+                ((TextView) findViewById(R.id.monitorEmpty)).setText("No hay monitores ingresados");
                 mostrarLista();
                 return true;
             default:
@@ -81,7 +78,7 @@ public class MonitorListActivity extends AppCompatActivity {
     }
 
     public void irNuevo(View view){
-        Intent intent = new Intent(this, ComputadoraNuevoActivity.class);
+        Intent intent = new Intent(this, MonitorNuevoActivity.class);
         startActivity(intent);
     }
 
@@ -92,7 +89,9 @@ public class MonitorListActivity extends AppCompatActivity {
         monitorlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("msgAS", "La computadora es la numero: "+i);
+                Intent intent = new Intent(MonitorListActivity.this, MonitorActualizarActivity.class);
+                intent.putExtra("monitor",monitorList.get(i));
+                startActivity(intent);
             }
         });
     }
@@ -107,20 +106,22 @@ public class MonitorListActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             public void onClick(DialogInterface dialog, int whichButton) {
                 String busqueda = busquedaEditText.getText().toString();
-                ArrayList<Computadora> computadoraList = ((Lab2Application) MonitorListActivity.this.getApplication()).getComputadoraList();
-                Optional<Computadora> optComputadora = computadoraList.stream().filter(c -> c.getActivo().equals(busqueda)).findAny();
-                ArrayList<Computadora> computadoraBusquedaList = new ArrayList<>();
-                if(optComputadora.isPresent()){
-                    computadoraBusquedaList.add(optComputadora.get());
+                ArrayList<Monitor> monitorList = ((Lab2Application) MonitorListActivity.this.getApplication()).getMonitorList();
+                Optional<Monitor> optMonitor = monitorList.stream().filter(c -> c.getActivo().equals(busqueda)).findAny();
+                ArrayList<Monitor> monitorBusquedaList = new ArrayList<>();
+                if(optMonitor.isPresent()){
+                    monitorBusquedaList.add(optMonitor.get());
                 }else{
-                    ((TextView) findViewById(R.id.computadoraEmpty)).setText("No existe el equipo con Activo: "+busqueda);
+                    ((TextView) findViewById(R.id.monitorEmpty)).setText("No existe el equipo con Activo: "+busqueda);
                 }
-                ComputadoraListAdapter computadoraBusquedaListAdapter = new ComputadoraListAdapter(MonitorListActivity.this, R.layout.item_equipos,computadoraBusquedaList);
-                monitorlistView.setAdapter(computadoraBusquedaListAdapter);
+                MonitorListAdapter monitorBusquedaListAdapter = new MonitorListAdapter(MonitorListActivity.this, R.layout.item_equipos,monitorBusquedaList);
+                monitorlistView.setAdapter(monitorBusquedaListAdapter);
                 monitorlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Log.d("msgAS", "La computadora es la numero: "+i);
+                        Intent intent = new Intent(MonitorListActivity.this, MonitorActualizarActivity.class);
+                        intent.putExtra("monitor",monitorBusquedaList.get(i));
+                        startActivity(intent);
                     }
                 });
             }

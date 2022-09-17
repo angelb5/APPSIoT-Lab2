@@ -46,9 +46,11 @@ public class ComputadoraNuevoActivity extends AppCompatActivity {
                 EditText cpu = findViewById(R.id.et_cpu_ncompu);
                 //TODO: Validaciones, activo no repetido, etc
                 String activoStr = activo.getText().toString();
+                activoStr = activoStr.trim();
                 String marcaStr = marca.getSelectedItem().toString();
                 String anioStr = anio.getText().toString();
                 String cpuStr = cpu.getText().toString();
+                cpuStr = cpuStr.trim();
                 ArrayList<Computadora> computadoraList = ((Lab2Application) ComputadoraNuevoActivity.this.getApplication()).getComputadoraList();
                 for (int i = 0; i < computadoraList.size() ; i++) {
                     if(computadoraList.get(i).getActivo().equals(activoStr)){
@@ -56,7 +58,8 @@ public class ComputadoraNuevoActivity extends AppCompatActivity {
                         break;
                     }
                 }
-                if(!activoStr.isEmpty() || !marcaStr.isEmpty() || !anioStr.isEmpty() || !cpuStr.isEmpty()){
+                Log.d("msg", String.valueOf(!activoStr.isEmpty()));
+                if(!activoStr.isEmpty() && !marcaStr.isEmpty() && !anioStr.isEmpty() && !cpuStr.isEmpty()){
                     if(activoNoRepeat){
                         computadora.setActivo(activoStr);
                         computadora.setMarca(marcaStr);
@@ -64,13 +67,13 @@ public class ComputadoraNuevoActivity extends AppCompatActivity {
                         computadora.setCpu(cpuStr);
                         computadoraList.add(computadora);
                         ((Lab2Application) ComputadoraNuevoActivity.this.getApplication()).setComputadoraList(computadoraList);
+                        finish();
                     }else{
                         Toast.makeText(ComputadoraNuevoActivity.this,"No puede repetir el nombre de activo",Toast.LENGTH_LONG).show();
                     }
                 }else{
                     Toast.makeText(ComputadoraNuevoActivity.this,"Debe rellenar todos los campos para agregar una computadora",Toast.LENGTH_LONG).show();
                 }
-                finish();
                 return true;
             default:
                 return super.onContextItemSelected(item);
