@@ -43,12 +43,12 @@
         android:id="@+id/spinner_activo_monitor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.192"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_activo_monitor" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_monitor_act" />
 
     <EditText
         android:id="@+id/et_anio"
@@ -64,20 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner_marca_monitor" />
 
     <EditText
-        android:id="@+id/et_activo_monitor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="number"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.343"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_monitor" />
-
-    <EditText
-        android:id="@+id/et_modelo_compu"
+        android:id="@+id/plaintextModeloact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -88,5 +75,18 @@
         app:layout_constraintHorizontal_bias="0.343"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_anio" />
+
+    <TextView
+        android:id="@+id/tv_monitor_act"
+        android:layout_width="165dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="176dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_monitor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

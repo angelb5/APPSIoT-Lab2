@@ -57,34 +57,6 @@ public class ComputadoraActualizarActivity extends AppCompatActivity {
         return true;
     }
 
-    public void obtenidos (View view){
-
-        TextView textView = findViewById(R.id.tv_activo_compu_act);
-        EditText editText = findViewById(R.id.et_anio_compu_act);
-        EditText editText1 = findViewById(R.id.et_cpu_compu_act);
-        Spinner spinner = findViewById(R.id.sp_marca_compu_act);
-
-        String activo = textView.getText().toString();
-        String anio = editText.getText().toString();
-        String cpu = editText1.getText().toString();
-        String marca = spinner.getOnItemSelectedListener().toString();
-
-        ArrayList<Computadora> computadoraList = ((Lab2Application) ComputadoraActualizarActivity.this.getApplication()).getComputadoraList();
-        for(Computadora computadora : computadoraList){
-            String activoobt = computadora.getActivo();
-            if(activo.equals(activoobt)){
-                computadora.setMarca(marca);
-                computadora.setAnio(anio);
-                computadora.setCpu(cpu);
-            }
-
-        }
-    }
-
-
-
-
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
