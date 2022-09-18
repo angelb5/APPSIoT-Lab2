@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appsiot_lab2.Lab2Application;
 import com.example.appsiot_lab2.R;
@@ -78,8 +79,12 @@ public class MonitorListActivity extends AppCompatActivity {
     }
 
     public void irNuevo(View view){
-        Intent intent = new Intent(this, MonitorNuevoActivity.class);
-        startActivity(intent);
+        if(((Lab2Application) MonitorListActivity.this.getApplication()).getComputadoraList().size()==0){
+            Toast.makeText(MonitorListActivity.this, "Aun no hay Computadoras registradas", Toast.LENGTH_SHORT).show();
+        }else{
+            Intent intent = new Intent(this, MonitorNuevoActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void mostrarLista(){

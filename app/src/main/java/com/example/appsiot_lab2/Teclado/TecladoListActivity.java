@@ -18,8 +18,10 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appsiot_lab2.Lab2Application;
+import com.example.appsiot_lab2.Monitor.MonitorListActivity;
 import com.example.appsiot_lab2.R;
 import com.example.appsiot_lab2.adapter.TecladoListAdapter;
 import com.example.appsiot_lab2.entity.Teclado;
@@ -77,22 +79,26 @@ public class TecladoListActivity extends AppCompatActivity {
     }
 
     public void irNuevo(View view){
-        Intent intent = new Intent(this, TecladoNuevoActivity.class);
-        startActivity(intent);
+        if(((Lab2Application) TecladoListActivity.this.getApplication()).getComputadoraList().size()==0){
+            Toast.makeText(TecladoListActivity.this, "Aun no hay Computadoras registradas", Toast.LENGTH_SHORT).show();
+        }else{
+            Intent intent = new Intent(this, TecladoNuevoActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void mostrarLista(){
         ArrayList<Teclado> tecladoList = ((Lab2Application) this.getApplication()).getTecladoList();
         TecladoListAdapter tecladoListAdapter = new TecladoListAdapter(TecladoListActivity.this, R.layout.item_equipos,tecladoList);
         tecladolistView.setAdapter(tecladoListAdapter);
-//        tecladolistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent = new Intent(TecladoListActivity.this, TecladoActualizarActivity.class);
-//                intent.putExtra("teclado",tecladoList.get(i));
-//                startActivity(intent);
-//            }
-//        });
+        tecladolistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(TecladoListActivity.this, TecladoActualizarActivity.class);
+                intent.putExtra("teclado",tecladoList.get(i));
+                startActivity(intent);
+            }
+        });
     }
 
     public void mostrarAlerta(){
@@ -118,7 +124,9 @@ public class TecladoListActivity extends AppCompatActivity {
                 tecladolistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Log.d("msgAS", "La teclade es la numero: "+i);
+                        Intent intent = new Intent(TecladoListActivity.this, TecladoActualizarActivity.class);
+                        intent.putExtra("teclado",tecladoBusquedaList.get(i));
+                        startActivity(intent);
                     }
                 });
             }
