@@ -23,7 +23,7 @@ public class Monitor implements Serializable {
     }
 
     public String getInfo(){
-        return "Activo: "+activo+"\nPC: "+pc+"\nMarca: "+marca+"\nAño: "+anio+"\nModelo: "+modelo;
+        return "Activo: "+activo+"\nPC: "+pc+"\nMarca: "+marca+"\nPulgadas: "+pulgadas+"\nAño: "+anio+"\nModelo: "+modelo;
     }
 
     public String getActivo() {

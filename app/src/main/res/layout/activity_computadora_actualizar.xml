@@ -8,26 +8,29 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tv_title_computadora"
             android:layout_width="wrap_content"
-            android:textSize="24sp"
             android:layout_height="wrap_content"
             android:layout_marginTop="140dp"
-            android:text="Computadora" />
+            android:text="Computadora"
+            android:textSize="24sp" />
+
         <TextView
             android:id="@+id/tv_activo_compu_act"
             android:layout_width="wrap_content"
-            android:textSize="16sp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Activo" />
+            android:text="Activo"
+            android:textSize="16sp" />
 
         <Spinner
             android:id="@+id/sp_marca_compu_act"
@@ -44,18 +47,18 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="Año"
-            android:textSize="16sp"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/et_cpu_compu_act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:textSize="16sp"
             android:ems="10"
             android:hint="CPU"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,6 +35,11 @@
             android:parentActivityName=".MainActivity"
             />
         <activity
+            android:name=".Monitor.MonitorActualizarActivity"
+            android:exported="false"
+            android:parentActivityName=".Monitor.MonitorListActivity"
+            />
+        <activity
             android:name=".Teclado.TecladoNuevoActivity"
             android:exported="false"
             android:parentActivityName=".Teclado.TecladoListActivity"

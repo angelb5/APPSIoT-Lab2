@@ -10,28 +10,30 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tv_title_ncomputadora"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
-            android:textSize="24sp"
-            android:text="Computadora" />
+            android:text="Computadora"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/et_activo_ncompu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:textSize="16sp"
             android:ems="10"
             android:hint="Activo"
             android:inputType="textPersonName"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:textSize="16sp" />
 
         <Spinner
             android:id="@+id/spinner_marca_ncomputadora"
@@ -43,23 +45,23 @@
 
         <EditText
             android:id="@+id/et_anio_ncompu"
-            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="Año"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/et_cpu_ncompu"
             android:layout_width="wrap_content"
-            android:textSize="16sp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="CPU"
-            android:inputType="textPersonName" />
+            android:inputType="textCapCharacters"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

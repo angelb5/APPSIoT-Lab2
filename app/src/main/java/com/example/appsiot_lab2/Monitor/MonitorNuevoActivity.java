@@ -33,13 +33,11 @@ public class MonitorNuevoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitor_nuevo);
         setTitle("Nuevo");
-        ArrayList<Computadora> computadoraList = ((Lab2Application) MonitorNuevoActivity.this.getApplication()).getComputadoraList();
-        List<String> activos = computadoraList.stream().map(Computadora::getActivo).collect(Collectors.toList());
+        List<String> activos = ((Lab2Application) MonitorNuevoActivity.this.getApplication()).getPCActivos();
         Spinner pcActivo = findViewById(R.id.spinner_activo_nmonitor);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(MonitorNuevoActivity.this, android.R.layout.simple_spinner_item,activos);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         pcActivo.setAdapter(adapter);
-
     }
 
     @Override
@@ -77,7 +75,7 @@ public class MonitorNuevoActivity extends AppCompatActivity {
                 }
                 //TODO: Validaciones, activo no repetido, etc
                 if(!activoStr.isEmpty() && !pcActivoStr.isEmpty() && !marcaStr.isEmpty() && !pulgadasStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty()
-                        && !(marca.getSelectedItemPosition()==0)){
+                        && !(marca.getSelectedItemPosition()==0) && !(pulgadas.getSelectedItemPosition()==0) && !(pcActivo.getSelectedItemPosition()==0)){
                     if(activoNoRepeat){
                         monitor.setActivo(activoStr);
                         monitor.setPc(pcActivoStr);

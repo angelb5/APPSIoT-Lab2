@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,9 +27,11 @@ import com.example.appsiot_lab2.entity.Monitor;
 import com.example.appsiot_lab2.entity.Teclado;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MonitorActualizarActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +47,17 @@ public class MonitorActualizarActivity extends AppCompatActivity {
         EditText anio = findViewById(R.id.et_anio);
         EditText modelo = findViewById(R.id.plaintextModeloact);
 
+        List<String> activos = ((Lab2Application) MonitorActualizarActivity.this.getApplication()).getPCActivos();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(MonitorActualizarActivity.this, android.R.layout.simple_spinner_item,activos);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        pcSpinner.setAdapter(adapter);
+
         activo.setText(monitor.getActivo());
         anio.setText(monitor.getAnio());
         modelo.setText(monitor.getModelo());
         String pcCompare = monitor.getPc();
         String marcaCompare = monitor.getMarca();
-        String pulgadasCompare = monitor.getModelo();
+        String pulgadasCompare = monitor.getPulgadas();
 
         for(int i = 0; i < pcSpinner.getCount(); i++){
             if(pcSpinner.getItemAtPosition(i).toString().equals(pcCompare)){
@@ -101,7 +109,8 @@ public class MonitorActualizarActivity extends AppCompatActivity {
                 ArrayList<Monitor> monitorList = ((Lab2Application) MonitorActualizarActivity.this.getApplication()).getMonitorList();
 
                 Log.d("msg", String.valueOf(!activoStr.isEmpty()));
-                if(!anioStr.isEmpty() && !modeloStr.isEmpty() && !pcStr.isEmpty() && !marcaStr.isEmpty() && !pulgadasStr.isEmpty() && !(marca.getSelectedItemPosition()==0)){
+                if(!anioStr.isEmpty() && !modeloStr.isEmpty() && !pcStr.isEmpty() && !marcaStr.isEmpty() && !pulgadasStr.isEmpty()
+                        && !(marca.getSelectedItemPosition()==0) && !(pulgadas.getSelectedItemPosition()==0) && !(pc.getSelectedItemPosition()==0)){
                     for(Monitor monitor : monitorList){
                         String activoobt = monitor.getActivo();
                         if(activoStr.equals(activoobt)){
