@@ -33,7 +33,7 @@ public class reporteActivity extends AppCompatActivity {
             }
         }
 
-        reporte.setText("Computadoras:\n-Total:"+computadoraList.size()+"\n-Del año 2022:"+cant2022+"\n\nTeclado:"+tecladoList.size()+"\nMonitor:"+monitorList.size());
+        reporte.setText("Computadoras:\n-Total: "+computadoraList.size()+"\n-Del año 2022: "+cant2022+"\n\nTeclado: "+tecladoList.size()+"\nMonitor: "+monitorList.size());
 
 
 

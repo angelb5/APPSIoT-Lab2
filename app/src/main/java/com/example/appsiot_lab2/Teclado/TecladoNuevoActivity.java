@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.appsiot_lab2.Lab2Application;
+import com.example.appsiot_lab2.Monitor.MonitorActualizarActivity;
 import com.example.appsiot_lab2.R;
 import com.example.appsiot_lab2.entity.Computadora;
 import com.example.appsiot_lab2.entity.Teclado;
@@ -29,8 +30,7 @@ public class TecladoNuevoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teclado_nuevo);
-        ArrayList<Computadora> computadoraList = ((Lab2Application) TecladoNuevoActivity.this.getApplication()).getComputadoraList();
-        List<String> activos = computadoraList.stream().map(Computadora::getActivo).collect(Collectors.toList());
+        List<String> activos = ((Lab2Application) TecladoNuevoActivity.this.getApplication()).getPCActivos();
         Spinner pcActivo = findViewById(R.id.spinner_activo_nteclado);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(TecladoNuevoActivity.this, android.R.layout.simple_spinner_item,activos);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -71,7 +71,8 @@ public class TecladoNuevoActivity extends AppCompatActivity {
                         break;
                     }
                 }
-                if(!activoStr.isEmpty() && !pcActivoStr.isEmpty() && !marcaStr.isEmpty() && !idiomaStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty() && !(marca.getSelectedItemPosition()==0)){
+                if(!activoStr.isEmpty() && !pcActivoStr.isEmpty() && !marcaStr.isEmpty() && !idiomaStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty()
+                        && !(marca.getSelectedItemPosition()==0) && !(pcActivo.getSelectedItemPosition()==0)){
                     if(activoNoRepeat){
                         teclado.setActivo(activoStr);
                         teclado.setMarca(marcaStr);

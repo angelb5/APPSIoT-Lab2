@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,9 +28,11 @@ import com.example.appsiot_lab2.entity.Monitor;
 import com.example.appsiot_lab2.entity.Teclado;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TecladoActualizarActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,17 +45,20 @@ public class TecladoActualizarActivity extends AppCompatActivity {
         EditText anio = findViewById(R.id.editTextTextAnioAct);
         EditText modelo = findViewById(R.id.editTextTextModeloAct);
 
+        List<String> activos = ((Lab2Application) TecladoActualizarActivity.this.getApplication()).getPCActivos();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(TecladoActualizarActivity.this, android.R.layout.simple_spinner_item,activos);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        pcActivo.setAdapter(adapter);
+
         Intent intent = getIntent();
         Teclado teclado = (Teclado) intent.getSerializableExtra("teclado");
-
         activo.setText(teclado.getActivo());
-
         anio.setText(teclado.getAnio());
         modelo.setText(teclado.getModelo());
 
         String pcCompare = teclado.getPc();
         String marcaCompare = teclado.getMarca();
-        String idiomaCompare = teclado.getModelo();
+        String idiomaCompare = teclado.getIdioma();
         for (int i = 0; i < pcActivo.getCount(); i++) {
             if (pcActivo.getItemAtPosition(i).toString().equals(pcCompare)) {
                 pcActivo.setSelection(i);
@@ -104,7 +110,8 @@ public class TecladoActualizarActivity extends AppCompatActivity {
                 ArrayList<Teclado> tecladoList = ((Lab2Application) TecladoActualizarActivity.this.getApplication()).getTecladoList();
 
                 Log.d("msg", String.valueOf(!activoStr.isEmpty()));
-                if(!anioStr.isEmpty() && !modeloStr.isEmpty() && !idiomaStr.isEmpty() && !marcaStr.isEmpty() && !pcStr.isEmpty() && !(marca.getSelectedItemPosition()==0)){
+                if(!anioStr.isEmpty() && !modeloStr.isEmpty() && !idiomaStr.isEmpty() && !marcaStr.isEmpty() && !pcStr.isEmpty()
+                        && !(marca.getSelectedItemPosition()==0) && !(pcActivo.getSelectedItemPosition()==0)){
                     for(Teclado teclado : tecladoList){
                         String activoobt = teclado.getActivo();
                         if(activoStr.equals(activoobt)){
