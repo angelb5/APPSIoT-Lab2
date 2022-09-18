@@ -79,6 +79,7 @@ public class TecladoNuevoActivity extends AppCompatActivity {
                         teclado.setPc(pcActivoStr);
                         teclado.setAnio(anioStr);
                         teclado.setModelo(modeloStr);
+                        teclado.setIdioma(idiomaStr);
                         tecladoList.add(teclado);
                         ((Lab2Application) TecladoNuevoActivity.this.getApplication()).setTecladoList(tecladoList);
                         finish();
