@@ -72,7 +72,7 @@ public class TecladoNuevoActivity extends AppCompatActivity {
                     }
                 }
                 if(!activoStr.isEmpty() && !pcActivoStr.isEmpty() && !marcaStr.isEmpty() && !idiomaStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty()
-                        && !(marca.getSelectedItemPosition()==0) && !(pcActivo.getSelectedItemPosition()==0)){
+                        && !(marca.getSelectedItemPosition()==0) && !(pcActivo.getSelectedItemPosition()==0) && !(idioma.getSelectedItemPosition()==0)){
                     if(activoNoRepeat){
                         teclado.setActivo(activoStr);
                         teclado.setMarca(marcaStr);

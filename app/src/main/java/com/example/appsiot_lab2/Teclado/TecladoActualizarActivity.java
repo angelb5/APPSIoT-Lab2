@@ -110,8 +110,8 @@ public class TecladoActualizarActivity extends AppCompatActivity {
                 ArrayList<Teclado> tecladoList = ((Lab2Application) TecladoActualizarActivity.this.getApplication()).getTecladoList();
 
                 Log.d("msg", String.valueOf(!activoStr.isEmpty()));
-                if(!anioStr.isEmpty() && !modeloStr.isEmpty() && !idiomaStr.isEmpty() && !marcaStr.isEmpty() && !pcStr.isEmpty()
-                        && !(marca.getSelectedItemPosition()==0) && !(pcActivo.getSelectedItemPosition()==0)){
+                if(!anioStr.isEmpty() && !modeloStr.isEmpty()
+                        && !(marca.getSelectedItemPosition()==0) && !(pcActivo.getSelectedItemPosition()==0) && !(idioma.getSelectedItemPosition()==0)){
                     for(Teclado teclado : tecladoList){
                         String activoobt = teclado.getActivo();
                         if(activoStr.equals(activoobt)){
@@ -120,7 +120,7 @@ public class TecladoActualizarActivity extends AppCompatActivity {
                             teclado.setPc(pcStr);
                             teclado.setAnio(anioStr);
                             teclado.setModelo(modeloStr);
-                            tecladoList.add(teclado);;
+                            teclado.setIdioma(idiomaStr);
                             ((Lab2Application) TecladoActualizarActivity.this.getApplication()).setTecladoList(tecladoList);
                             finish();
                         }
