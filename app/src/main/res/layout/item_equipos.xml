@@ -9,13 +9,14 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginVertical="16dp"
+            android:layout_marginStart="24dp"
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/textViewComputadoraItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="16sp"
                 android:text="activo: C04232\nmarca: Dill\nAño: 2023\nCPU: a veces"/>
         </LinearLayout>
 
