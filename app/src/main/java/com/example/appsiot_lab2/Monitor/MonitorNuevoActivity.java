@@ -52,7 +52,6 @@ public class MonitorNuevoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.btnBarAdd:
-                //Datos de prueba
                 Monitor monitor = new Monitor();
                 Boolean activoNoRepeat = true;
                 EditText activo = findViewById(R.id.et_activo_nmonitor);
@@ -77,7 +76,8 @@ public class MonitorNuevoActivity extends AppCompatActivity {
                     }
                 }
                 //TODO: Validaciones, activo no repetido, etc
-                if(!activoStr.isEmpty() && !pcActivoStr.isEmpty() && !marcaStr.isEmpty() && !pulgadasStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty()){
+                if(!activoStr.isEmpty() && !pcActivoStr.isEmpty() && !marcaStr.isEmpty() && !pulgadasStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty()
+                        && !(marca.getSelectedItemPosition()==0)){
                     if(activoNoRepeat){
                         monitor.setActivo(activoStr);
                         monitor.setPc(pcActivoStr);

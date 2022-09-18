@@ -70,25 +70,20 @@ public class ComputadoraActualizarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.btnActualizar:
-                //Datos de prueba
-
-
-                TextView textView = findViewById(R.id.tv_activo_compu_act);
-                EditText editText = findViewById(R.id.et_anio_compu_act);
-                EditText editText1 = findViewById(R.id.et_cpu_compu_act);
-                Spinner spinner = findViewById(R.id.sp_marca_compu_act);;
+                TextView activoTextView = findViewById(R.id.tv_activo_compu_act);
+                EditText anioEditText = findViewById(R.id.et_anio_compu_act);
+                EditText cpuEditText = findViewById(R.id.et_cpu_compu_act);
+                Spinner marcaSpinner = findViewById(R.id.sp_marca_compu_act);;
                 //TODO: Validaciones, activo no repetido, etc
-
-
-                String activo = textView.getText().toString();
-                String anio = editText.getText().toString();
-                String marca = spinner.getOnItemSelectedListener().toString();
-                String cpuStr = editText1.getText().toString();
+                String activo = activoTextView.getText().toString();
+                String anio = anioEditText.getText().toString();
+                String marca = marcaSpinner.getSelectedItem().toString();
+                String cpuStr = cpuEditText.getText().toString();
                 cpuStr = cpuStr.trim();
                 ArrayList<Computadora> computadoraList = ((Lab2Application) ComputadoraActualizarActivity.this.getApplication()).getComputadoraList();
 
                 Log.d("msg", String.valueOf(!activo.isEmpty()));
-                if(!activo.isEmpty() && !marca.isEmpty() && !anio.isEmpty() && !cpuStr.isEmpty()){
+                if(!activo.isEmpty() && !marca.isEmpty() && !anio.isEmpty() && !cpuStr.isEmpty() && !(marcaSpinner.getSelectedItemPosition()==0)){
                     for(Computadora computadora : computadoraList){
                         String activoobt = computadora.getActivo();
                         if(activo.equals(activoobt)){

@@ -6,60 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".Computadora.ComputadoraActualizarActivity">
 
-    <TextView
-        android:id="@+id/tv_title_computadora"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:text="Computadora"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <Spinner
-        android:id="@+id/sp_marca_compu_act"
-        android:layout_width="165dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="28dp"
-        android:entries="@array/marcas"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_activo_compu_act"
-        app:layout_constraintStart_toStartOf="@+id/tv_activo_compu_act"
-        app:layout_constraintTop_toBottomOf="@+id/tv_activo_compu_act" />
+        <TextView
+            android:id="@+id/tv_title_computadora"
+            android:layout_width="wrap_content"
+            android:textSize="24sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:text="Computadora" />
+        <TextView
+            android:id="@+id/tv_activo_compu_act"
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Activo" />
 
-    <EditText
-        android:id="@+id/et_anio_compu_act"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.308"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_marca_compu_act" />
+        <Spinner
+            android:id="@+id/sp_marca_compu_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:entries="@array/marcas"
+            android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/et_cpu_compu_act"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_anio_compu_act"
-        app:layout_constraintStart_toStartOf="@+id/et_anio_compu_act"
-        app:layout_constraintTop_toBottomOf="@+id/et_anio_compu_act" />
+        <EditText
+            android:id="@+id/et_anio_compu_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="Año"
+            android:textSize="16sp"
+            android:inputType="number" />
 
-    <TextView
-        android:id="@+id/tv_activo_compu_act"
-        android:layout_width="165dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="28dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/tv_title_computadora"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_title_computadora"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_computadora" />
+        <EditText
+            android:id="@+id/et_cpu_compu_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:ems="10"
+            android:hint="CPU"
+            android:inputType="textPersonName" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

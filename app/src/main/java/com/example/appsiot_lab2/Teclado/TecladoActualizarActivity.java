@@ -87,7 +87,6 @@ public class TecladoActualizarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.btnActualizar:
-                //Datos de prueba
                 TextView activo = findViewById(R.id.textViewActivoTeclado);
                 Spinner pcActivo = findViewById(R.id.spinnerPc);
                 Spinner marca = findViewById(R.id.spinnerMarca);
@@ -105,7 +104,7 @@ public class TecladoActualizarActivity extends AppCompatActivity {
                 ArrayList<Teclado> tecladoList = ((Lab2Application) TecladoActualizarActivity.this.getApplication()).getTecladoList();
 
                 Log.d("msg", String.valueOf(!activoStr.isEmpty()));
-                if(!anioStr.isEmpty() && !modeloStr.isEmpty() && !idiomaStr.isEmpty() && !marcaStr.isEmpty() && !pcStr.isEmpty()){
+                if(!anioStr.isEmpty() && !modeloStr.isEmpty() && !idiomaStr.isEmpty() && !marcaStr.isEmpty() && !pcStr.isEmpty() && !(marca.getSelectedItemPosition()==0)){
                     for(Teclado teclado : tecladoList){
                         String activoobt = teclado.getActivo();
                         if(activoStr.equals(activoobt)){

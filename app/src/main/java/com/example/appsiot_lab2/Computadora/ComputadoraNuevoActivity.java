@@ -60,7 +60,7 @@ public class ComputadoraNuevoActivity extends AppCompatActivity {
                     }
                 }
                 Log.d("msg", String.valueOf(!activoStr.isEmpty()));
-                if(!activoStr.isEmpty() && !marcaStr.isEmpty() && !anioStr.isEmpty() && !cpuStr.isEmpty()){
+                if(!activoStr.isEmpty() && !marcaStr.isEmpty() && !anioStr.isEmpty() && !cpuStr.isEmpty() && !(marca.getSelectedItemPosition()==0)){
                     if(activoNoRepeat){
                         computadora.setActivo(activoStr);
                         computadora.setMarca(marcaStr);

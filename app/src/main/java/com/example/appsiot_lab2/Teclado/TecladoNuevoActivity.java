@@ -47,7 +47,6 @@ public class TecladoNuevoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.btnBarAdd:
-                //Datos de prueba
                 Teclado teclado = new Teclado();
                 Boolean activoNoRepeat = true;
                 EditText activo = findViewById(R.id.et_activo_nteclado);
@@ -72,7 +71,7 @@ public class TecladoNuevoActivity extends AppCompatActivity {
                         break;
                     }
                 }
-                if(!activoStr.isEmpty() && !pcActivoStr.isEmpty() && !marcaStr.isEmpty() && !idiomaStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty()){
+                if(!activoStr.isEmpty() && !pcActivoStr.isEmpty() && !marcaStr.isEmpty() && !idiomaStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty() && !(marca.getSelectedItemPosition()==0)){
                     if(activoNoRepeat){
                         teclado.setActivo(activoStr);
                         teclado.setMarca(marcaStr);

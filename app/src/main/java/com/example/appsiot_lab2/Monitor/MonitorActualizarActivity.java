@@ -38,14 +38,11 @@ public class MonitorActualizarActivity extends AppCompatActivity {
         Monitor monitor = (Monitor) intent.getSerializableExtra("monitor");
 
         TextView activo = findViewById(R.id.tv_monitor_act);
-        Spinner pc = findViewById(R.id.spinner_activo_monitor);
-        Spinner marca = findViewById(R.id.spinner_marca_monitor);
-        Spinner pulgadas = findViewById(R.id.spinner_pulgadas_monitor);
+        Spinner pcSpinner = findViewById(R.id.spinner_activo_monitor);
+        Spinner marcaSpinner = findViewById(R.id.spinner_marca_monitor);
+        Spinner pulgadasSpinner = findViewById(R.id.spinner_pulgadas_monitor);
         EditText anio = findViewById(R.id.et_anio);
         EditText modelo = findViewById(R.id.plaintextModeloact);
-
-
-
 
         activo.setText(monitor.getActivo());
         anio.setText(monitor.getAnio());
@@ -54,23 +51,23 @@ public class MonitorActualizarActivity extends AppCompatActivity {
         String marcaCompare = monitor.getMarca();
         String pulgadasCompare = monitor.getModelo();
 
-        for(int i = 0; i < pc.getCount(); i++){
-            if(pc.getItemAtPosition(i).toString().equals(pcCompare)){
-                pc.setSelection(i);
+        for(int i = 0; i < pcSpinner.getCount(); i++){
+            if(pcSpinner.getItemAtPosition(i).toString().equals(pcCompare)){
+                pcSpinner.setSelection(i);
                 break;
             }
         }
 
-        for(int i = 0; i < marca.getCount(); i++){
-            if(marca.getItemAtPosition(i).toString().equals(marcaCompare)){
-                marca.setSelection(i);
+        for(int i = 0; i < marcaSpinner.getCount(); i++){
+            if(marcaSpinner.getItemAtPosition(i).toString().equals(marcaCompare)){
+                marcaSpinner.setSelection(i);
                 break;
             }
         }
 
-        for(int i = 0; i < pulgadas.getCount(); i++){
-            if(pulgadas.getItemAtPosition(i).toString().equals(pulgadasCompare)){
-                pulgadas.setSelection(i);
+        for(int i = 0; i < pulgadasSpinner.getCount(); i++){
+            if(pulgadasSpinner.getItemAtPosition(i).toString().equals(pulgadasCompare)){
+                pulgadasSpinner.setSelection(i);
                 break;
             }
         }
@@ -87,9 +84,6 @@ public class MonitorActualizarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.btnActualizar:
-                //Datos de prueba
-
-
                 TextView activo = findViewById(R.id.tv_monitor_act);
                 Spinner pc = findViewById(R.id.spinner_activo_monitor);
                 Spinner marca = findViewById(R.id.spinner_marca_monitor);
@@ -107,7 +101,7 @@ public class MonitorActualizarActivity extends AppCompatActivity {
                 ArrayList<Monitor> monitorList = ((Lab2Application) MonitorActualizarActivity.this.getApplication()).getMonitorList();
 
                 Log.d("msg", String.valueOf(!activoStr.isEmpty()));
-                if(!anioStr.isEmpty() && !modeloStr.isEmpty() && !pcStr.isEmpty() && !marcaStr.isEmpty() && !pulgadasStr.isEmpty()){
+                if(!anioStr.isEmpty() && !modeloStr.isEmpty() && !pcStr.isEmpty() && !marcaStr.isEmpty() && !pulgadasStr.isEmpty() && !(marca.getSelectedItemPosition()==0)){
                     for(Monitor monitor : monitorList){
                         String activoobt = monitor.getActivo();
                         if(activoStr.equals(activoobt)){

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">APPSIoT-Lab2</string>
     <string-array name="marcas">
+        <item>Seleccione Marca</item>
         <item>MSI</item>
         <item>Asus</item>
         <item>Lenovo</item>
