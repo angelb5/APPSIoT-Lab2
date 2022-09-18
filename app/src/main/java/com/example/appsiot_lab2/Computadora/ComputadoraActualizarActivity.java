@@ -1,9 +1,13 @@
 package com.example.appsiot_lab2.Computadora;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -16,10 +20,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appsiot_lab2.Lab2Application;
+import com.example.appsiot_lab2.Monitor.MonitorActualizarActivity;
+import com.example.appsiot_lab2.Monitor.MonitorListActivity;
 import com.example.appsiot_lab2.R;
+import com.example.appsiot_lab2.adapter.MonitorListAdapter;
 import com.example.appsiot_lab2.entity.Computadora;
+import com.example.appsiot_lab2.entity.Monitor;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ComputadoraActualizarActivity extends AppCompatActivity {
 
@@ -27,7 +36,7 @@ public class ComputadoraActualizarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_computadora_actualizar);
-
+        setTitle("Actualizar");
         Intent intent = getIntent();
         Computadora computadora = (Computadora) intent.getSerializableExtra("computadora");
 
@@ -96,6 +105,37 @@ public class ComputadoraActualizarActivity extends AppCompatActivity {
                     Toast.makeText(ComputadoraActualizarActivity.this,"Debe rellenar todos los campos para actualizar una computadora",Toast.LENGTH_LONG).show();
                 }
                 return true;
+            case R.id.btnDelete:
+
+                AlertDialog.Builder alerta = new AlertDialog.Builder(ComputadoraActualizarActivity.this);
+                alerta.setMessage("¿Esta seguro que desea borrar?");
+
+                alerta.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        ArrayList<Computadora> computadoraListDel = ((Lab2Application) ComputadoraActualizarActivity.this.getApplication()).getComputadoraList();
+                        TextView textViewdel = findViewById(R.id.tv_activo_compu_act);
+                        String activodel = textViewdel.getText().toString();
+
+                        for(Computadora computadora : computadoraListDel){
+                            String activoobt = computadora.getActivo();
+                            if(activodel.equals(activoobt)){
+                                computadoraListDel.remove(computadora);
+                                ((Lab2Application) ComputadoraActualizarActivity.this.getApplication()).setComputadoraList(computadoraListDel);
+                                finish();
+                                break;
+                            }
+
+                        }
+
+                    }
+                });
+                alerta.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                });
+                alerta.show();
+
             default:
                 return super.onContextItemSelected(item);
         }

@@ -32,6 +32,7 @@ public class MonitorNuevoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitor_nuevo);
+        setTitle("Nuevo");
         ArrayList<Computadora> computadoraList = ((Lab2Application) MonitorNuevoActivity.this.getApplication()).getComputadoraList();
         List<String> activos = computadoraList.stream().map(Computadora::getActivo).collect(Collectors.toList());
         Spinner pcActivo = findViewById(R.id.spinner_activo_nmonitor);

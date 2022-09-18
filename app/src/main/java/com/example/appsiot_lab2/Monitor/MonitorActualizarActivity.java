@@ -1,9 +1,13 @@
 package com.example.appsiot_lab2.Monitor;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -16,8 +20,10 @@ import android.widget.Toast;
 import com.example.appsiot_lab2.Computadora.ComputadoraActualizarActivity;
 import com.example.appsiot_lab2.Lab2Application;
 import com.example.appsiot_lab2.R;
+import com.example.appsiot_lab2.Teclado.TecladoActualizarActivity;
 import com.example.appsiot_lab2.entity.Computadora;
 import com.example.appsiot_lab2.entity.Monitor;
+import com.example.appsiot_lab2.entity.Teclado;
 
 import java.util.ArrayList;
 
@@ -118,6 +124,37 @@ public class MonitorActualizarActivity extends AppCompatActivity {
                     Toast.makeText(MonitorActualizarActivity.this,"Debe rellenar todos los campos para actualizar una computadora",Toast.LENGTH_LONG).show();
                 }
                 return true;
+
+            case R.id.btnDelete:
+
+                AlertDialog.Builder alerta = new AlertDialog.Builder(MonitorActualizarActivity.this);
+                alerta.setMessage("¿Esta seguro que desea borrar?");
+
+                alerta.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        ArrayList<Monitor> monitorListDel = ((Lab2Application) MonitorActualizarActivity.this.getApplication()).getMonitorList();
+                        TextView textViewdel = findViewById(R.id.tv_monitor_act);
+                        String activodel = textViewdel.getText().toString();
+
+                        for(Monitor monitor : monitorListDel){
+                            String activoobt = monitor.getActivo();
+                            if(activodel.equals(activoobt)){
+                                monitorListDel.remove(monitor);
+                                ((Lab2Application) MonitorActualizarActivity.this.getApplication()).setMonitorList(monitorListDel);
+                                finish();
+                                break;
+                            }
+
+                        }
+                    }
+                });
+                alerta.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                });
+                alerta.show();
+
             default:
                 return super.onContextItemSelected(item);
         }

@@ -25,6 +25,7 @@ public class ComputadoraNuevoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_computadora_nuevo);
+        setTitle("Nuevo");
     }
 
     @Override

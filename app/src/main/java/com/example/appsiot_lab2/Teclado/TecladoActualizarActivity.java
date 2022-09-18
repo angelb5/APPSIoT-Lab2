@@ -1,9 +1,13 @@
 package com.example.appsiot_lab2.Teclado;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appsiot_lab2.Computadora.ComputadoraActualizarActivity;
 import com.example.appsiot_lab2.Lab2Application;
 import com.example.appsiot_lab2.Monitor.MonitorActualizarActivity;
 import com.example.appsiot_lab2.R;
@@ -83,8 +88,6 @@ public class TecladoActualizarActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.btnActualizar:
                 //Datos de prueba
-
-
                 TextView activo = findViewById(R.id.textViewActivoTeclado);
                 Spinner pcActivo = findViewById(R.id.spinnerPc);
                 Spinner marca = findViewById(R.id.spinnerMarca);
@@ -120,6 +123,38 @@ public class TecladoActualizarActivity extends AppCompatActivity {
                     Toast.makeText(TecladoActualizarActivity.this,"Debe rellenar todos los campos para actualizar una computadora",Toast.LENGTH_LONG).show();
                 }
                 return true;
+
+            case R.id.btnDelete:
+
+                AlertDialog.Builder alerta = new AlertDialog.Builder(TecladoActualizarActivity.this);
+                alerta.setMessage("¿Esta seguro que desea borrar?");
+
+                alerta.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        ArrayList<Teclado> tecladoListDel = ((Lab2Application) TecladoActualizarActivity.this.getApplication()).getTecladoList();
+                        TextView textViewdel = findViewById(R.id.textViewActivoTeclado);
+                        String activodel = textViewdel.getText().toString();
+
+                        for(Teclado teclado : tecladoListDel){
+                            String activoobt = teclado.getActivo();
+                            if(activodel.equals(activoobt)){
+                                tecladoListDel.remove(teclado);
+                                ((Lab2Application) TecladoActualizarActivity.this.getApplication()).setTecladoList(tecladoListDel);
+                                finish();
+                                break;
+                            }
+
+                        }
+                    }
+                });
+                alerta.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                });
+                alerta.show();
+
+
             default:
                 return super.onContextItemSelected(item);
         }
