@@ -6,62 +6,74 @@
     android:layout_height="match_parent"
     tools:context=".Computadora.ComputadoraNuevoActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_title_ncomputadora"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:text="Computadora"
-            android:textSize="24sp" />
+            android:layout_marginStart="24dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/et_activo_ncompu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:ems="10"
-            android:hint="Activo"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv_title_ncomputadora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="160dp"
+                android:text="Computadora"
+                android:textSize="24sp" />
 
-        <Spinner
-            android:id="@+id/spinner_marca_ncomputadora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:entries="@array/marcas"
-            android:minHeight="48dp" />
+            <EditText
+                android:id="@+id/et_activo_ncompu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:hint="Activo"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/et_anio_ncompu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="Año"
-            android:inputType="number"
-            android:textSize="16sp" />
+            <Spinner
+                android:id="@+id/spinner_marca_ncomputadora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:entries="@array/marcas"
+                android:minHeight="48dp" />
 
-        <EditText
-            android:id="@+id/et_cpu_ncompu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="CPU"
-            android:inputType="textCapCharacters"
-            android:textSize="16sp" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/et_anio_ncompu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="Año"
+                android:inputType="number"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_cpu_ncompu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="CPU"
+                android:inputType="textCapCharacters"
+                android:textSize="16sp"
+                android:layout_marginBottom="160dp"/>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
