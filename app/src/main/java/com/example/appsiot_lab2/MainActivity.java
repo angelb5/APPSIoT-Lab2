@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void reporte(View view){
-        Intent intent = new Intent(this, MonitorListActivity.class);
+        Intent intent = new Intent(this, reporteActivity.class);
         startActivity(intent);
 
     }

@@ -14,7 +14,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.appsiot_lab2.Lab2Application;
-import com.example.appsiot_lab2.Monitor.MonitorNuevoActivity;
 import com.example.appsiot_lab2.R;
 import com.example.appsiot_lab2.entity.Computadora;
 import com.example.appsiot_lab2.entity.Teclado;
@@ -32,7 +31,7 @@ public class TecladoNuevoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_teclado_nuevo);
         ArrayList<Computadora> computadoraList = ((Lab2Application) TecladoNuevoActivity.this.getApplication()).getComputadoraList();
         List<String> activos = computadoraList.stream().map(Computadora::getActivo).collect(Collectors.toList());
-        Spinner pcActivo = findViewById(R.id.spinner_activo_nmonitor);
+        Spinner pcActivo = findViewById(R.id.spinner_activo_nteclado);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(TecladoNuevoActivity.this, android.R.layout.simple_spinner_item,activos);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         pcActivo.setAdapter(adapter);
@@ -56,11 +55,11 @@ public class TecladoNuevoActivity extends AppCompatActivity {
                 Spinner marca = findViewById(R.id.spinner_marca_nteclado);
                 Spinner idioma = findViewById(R.id.spinner_idioma_nteclado);
                 EditText anio = findViewById(R.id.et_anio_nteclado);
-                EditText modelo = findViewById(R.id.et_modelo_nteclado);
+                EditText modelo = findViewById(R.id.et_modelo_nmonitor);
                 //TODO: Validaciones, activo no repetido, etc
                 String activoStr = activo.getText().toString();
                 activoStr = activoStr.trim();
-                Computadora pcActivoCom = (Computadora) pcActivo.getSelectedItem();
+                String pcActivoStr = pcActivo.getSelectedItem().toString();
                 String marcaStr = marca.getSelectedItem().toString();
                 String idiomaStr = idioma.getSelectedItem().toString();
                 String anioStr = anio.getText().toString();
@@ -73,11 +72,11 @@ public class TecladoNuevoActivity extends AppCompatActivity {
                         break;
                     }
                 }
-                if(!activoStr.isEmpty() && !pcActivoCom.getActivo().isEmpty() && !marcaStr.isEmpty() && !idiomaStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty()){
+                if(!activoStr.isEmpty() && !pcActivoStr.isEmpty() && !marcaStr.isEmpty() && !idiomaStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty()){
                     if(activoNoRepeat){
                         teclado.setActivo(activoStr);
                         teclado.setMarca(marcaStr);
-                        teclado.setPc(pcActivoCom);
+                        teclado.setPc(pcActivoStr);
                         teclado.setAnio(anioStr);
                         teclado.setModelo(modeloStr);
                         tecladoList.add(teclado);

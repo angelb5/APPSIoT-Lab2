@@ -60,9 +60,9 @@ public class MonitorNuevoActivity extends AppCompatActivity {
                 Spinner marca = findViewById(R.id.spinner_marca_nmonitor);
                 Spinner pulgadas = findViewById(R.id.spinner_pulgadas_nmonitor);
                 EditText anio = findViewById(R.id.et_anio_nmonitor);
-                EditText modelo = findViewById(R.id.et_modelo_nteclado);
+                EditText modelo = findViewById(R.id.et_modelo_nmonitor);
                 activoStr = activoStr.trim();
-                Computadora pcActivoCom = (Computadora) pcActivo.getSelectedItem();
+                String pcActivoStr = pcActivo.getSelectedItem().toString();
                 String marcaStr = marca.getSelectedItem().toString();
                 String pulgadasStr = pulgadas.getSelectedItem().toString();
                 String anioStr = anio.getText().toString();
@@ -76,14 +76,15 @@ public class MonitorNuevoActivity extends AppCompatActivity {
                     }
                 }
                 //TODO: Validaciones, activo no repetido, etc
-                if(!activoStr.isEmpty() && !pcActivoCom.getActivo().isEmpty() && !marcaStr.isEmpty() && !pulgadasStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty()){
+                if(!activoStr.isEmpty() && !pcActivoStr.isEmpty() && !marcaStr.isEmpty() && !pulgadasStr.isEmpty() && !anioStr.isEmpty() && !modeloStr.isEmpty()){
                     if(activoNoRepeat){
                         monitor.setActivo(activoStr);
-                        monitor.setPc(pcActivoCom);
+                        monitor.setPc(pcActivoStr);
                         monitor.setMarca(marcaStr);
                         monitor.setAnio(anioStr);
                         monitor.setPulgadas(pulgadasStr);
                         monitor.setModelo(modeloStr);
+                        monitorList.add(monitor);
                         ((Lab2Application) MonitorNuevoActivity.this.getApplication()).setMonitorList(monitorList);
                         finish();
                     }else{

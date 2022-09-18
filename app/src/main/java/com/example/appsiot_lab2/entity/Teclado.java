@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Teclado implements Serializable {
     private String activo;
-    private Computadora pc;
+    private String pc;
     private String marca;
     private String idioma;
     private String anio;
@@ -13,7 +13,7 @@ public class Teclado implements Serializable {
     public Teclado() {
     }
 
-    public Teclado(String activo, Computadora pc, String marca, String idioma, String anio, String modelo) {
+    public Teclado(String activo, String pc, String marca, String idioma, String anio, String modelo) {
         this.activo = activo;
         this.pc = pc;
         this.marca = marca;
@@ -34,11 +34,11 @@ public class Teclado implements Serializable {
         this.activo = activo;
     }
 
-    public Computadora getPc() {
+    public String getPc() {
         return pc;
     }
 
-    public void setPc(Computadora pc) {
+    public void setPc(String pc) {
         this.pc = pc;
     }
 
